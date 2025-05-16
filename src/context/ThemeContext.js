@@ -55,7 +55,6 @@ export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
   const theme = isDark ? darkTheme : lightTheme;
 
-  // Load theme preference on mount
   useEffect(() => {
     const loadTheme = async () => {
       try {
@@ -63,7 +62,6 @@ export const ThemeProvider = ({ children }) => {
         if (savedTheme !== null) {
           setIsDark(savedTheme === 'dark');
         } else {
-          // Use system theme as default if no saved preference
           setIsDark(deviceTheme === 'dark');
         }
       } catch (error) {

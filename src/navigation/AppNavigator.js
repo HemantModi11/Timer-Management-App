@@ -12,8 +12,6 @@ const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   const { theme = lightTheme, isDark = false } = useContext(ThemeContext) || {};
 
-  // Configure the NavigationContainer theme based on our app theme
-  // Start with the default theme to get all the necessary font configurations
   const baseTheme = isDark ? DarkTheme : DefaultTheme;
   const navigationTheme = {
     ...baseTheme,
@@ -34,7 +32,7 @@ const AppNavigator = () => {
       <Stack.Navigator 
         initialRouteName="Home"
         screenOptions={{
-          headerShown: false, // Hide the default headers for all screens
+          headerShown: false,
           contentStyle: { backgroundColor: theme?.background || '#FFFFFF' },
           animation: 'slide_from_right',
         }}

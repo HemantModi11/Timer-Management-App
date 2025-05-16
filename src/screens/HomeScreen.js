@@ -18,7 +18,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { groupTimersByCategory } from '../utils/groupTimersByCategory';
 import { ThemeContext, lightTheme  } from '../context/ThemeContext';
 import { ThemedButton, TimerProgress } from '../components/UIComponents';
-import { Ionicons } from '@expo/vector-icons'; // Make sure to install expo/vector-icons if not already
+import { Ionicons } from '@expo/vector-icons';
 
 if (Platform.OS === 'android') {
   UIManager.setLayoutAnimationEnabledExperimental?.(true);
@@ -38,7 +38,6 @@ const HomeScreen = ({ navigation }) => {
         const storedTimers = json ? JSON.parse(json) : [];
         setTimers(storedTimers);
         
-        // Auto-expand categories if there are few of them
         if (storedTimers.length > 0) {
           const categories = [...new Set(storedTimers.map(t => t.category))];
           if (categories.length <= 3) {
@@ -58,7 +57,7 @@ const HomeScreen = ({ navigation }) => {
     try {
       const storedHistory = await AsyncStorage.getItem('@timer_history');
       const history = storedHistory ? JSON.parse(storedHistory) : [];
-      history.unshift({ name: timerName, completedAt: Date.now() }); // newest first
+      history.unshift({ name: timerName, completedAt: Date.now() });
       await AsyncStorage.setItem('@timer_history', JSON.stringify(history));
     } catch (e) {
       console.log('Failed to save history', e);
@@ -150,7 +149,7 @@ const HomeScreen = ({ navigation }) => {
             ...t,
             remaining: t.duration,
             status: 'Paused',
-            halfwayTriggered: false, // Reset halfway alert flag
+            halfwayTriggered: false,
           };
         }
         return t;
@@ -211,11 +210,11 @@ const HomeScreen = ({ navigation }) => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'Running':
-        return '#4CAF50'; // Green
+        return '#4CAF50';
       case 'Paused':
-        return '#FFC107'; // Amber
+        return '#FFC107';
       case 'Completed':
-        return '#2196F3'; // Blue
+        return '#2196F3';
       default:
         return theme?.secondaryText || '#757575';
     }
@@ -357,7 +356,7 @@ const HomeScreen = ({ navigation }) => {
                     data={grouped[category]}
                     keyExtractor={(item) => item.id}
                     renderItem={renderTimer}
-                    scrollEnabled={false} // Important - prevents nested scrolling issues
+                    scrollEnabled={false}
                   />
                 </>
               )}
