@@ -49,24 +49,10 @@ This React Native app enables users to create, manage, and track multiple custom
    yarn install
    ```
 
-3. Run the app
-
-* For Android
-
-  ```bash
-  npx react-native run-android
-  ```
-
-* For iOS
-
-  ```bash
-  npx react-native run-ios
-  ```
-
-4. (Optional) Start Metro bundler if it doesn’t start automatically
+3. Start Metro bundler
 
    ```bash
-   npx react-native start
+   npm run start
    ```
 
 ---
@@ -74,11 +60,10 @@ This React Native app enables users to create, manage, and track multiple custom
 ## Project Structure
 
 * `App.js` – Root component wrapped with ThemeProvider
-* `ThemeContext.js` – Theme management with light/dark modes
+* `context/ThemeContext.js` – Theme management with light/dark modes
 * `screens/` – All screen components (AddTimer, Home, History, etc.)
-* `components/` – Reusable UI components (TimerCard, CategoryFilter, etc.)
+* `components/` – Reusable UI components (UIComponents.js)
 * `utils/` – Helper functions and storage handlers
-* `assets/` – Static assets like icons and images
 
 ---
 
